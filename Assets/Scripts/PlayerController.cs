@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // References
     Rigidbody2D playerRB;
     Animator thrustAnimation;
     AudioSource audioSource;
     [SerializeField] GameObject bulletPrefab;
 
+    // Config
     [SerializeField] float thrustForce;
     [SerializeField] float rotationSpeed;
-
-    [SerializeField] float screenBoundaryX;
-    [SerializeField] float screenBoundaryY;
 
     void Start()
     {
@@ -24,8 +23,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, 0, -Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime);
+        ApplyRotation();
+        ApplyThrust();
+        FireBullet();
+    }
 
+    void ApplyRotation()
+    {
+        transform.Rotate(0, 0, -Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime);
+    }
+
+    void ApplyThrust()
+    {
         if (Input.GetKey(KeyCode.UpArrow))
         {
             playerRB.AddForce(transform.up * thrustForce);
@@ -40,24 +49,10 @@ public class PlayerController : MonoBehaviour
             thrustAnimation.SetBool("isThrusting", false);
             audioSource.Stop();
         }
+    }
 
-        if (transform.position.x > screenBoundaryX)
-        {
-            transform.position = new Vector2(-screenBoundaryX, transform.position.y);
-        }
-        else if (transform.position.x < -screenBoundaryX)
-        {
-            transform.position = new Vector2(screenBoundaryX, transform.position.y);
-        }
-        else if (transform.position.y > screenBoundaryY)
-        {
-            transform.position = new Vector2(transform.position.x, -screenBoundaryY);
-        }
-        else if (transform.position.y < -screenBoundaryY)
-        {
-            transform.position = new Vector2(transform.position.x, screenBoundaryY);
-        }
-
+    void FireBullet()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bulletPrefab, transform.position, transform.rotation);
