@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             playerRB.AddForce(transform.up * thrustForce);
             thrustAnimation.SetBool("isThrusting", true);
-            if (!audioSource.isPlaying) // without this, the audio will layer over itself every frame, leading to distortion / noise
+            if (!audioSource.isPlaying) // Without this, the audio will layer over itself every frame, leading to distortion / noise
             {
                 audioSource.Play();
             }
