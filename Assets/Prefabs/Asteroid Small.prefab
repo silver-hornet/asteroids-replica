@@ -134,8 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9eee38606dc47f484c19022155e525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextAsteroid: {fileID: 4057713067225437383, guid: 25b1e9990af614a4fa01267685445cd8,
+  nextAsteroid: {fileID: 4057713067225437383, guid: 85aaa3d91828d412cafae2745d90037a,
     type: 3}
+  explosion: {fileID: 8300000, guid: 600365f08568248c0b7900a428944cd0, type: 3}
   minSpeed: 3
   maxSpeed: 6
 --- !u!114 &4057713067225437389
