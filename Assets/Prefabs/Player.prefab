@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 5835469963509225320}
   - component: {fileID: 2578029236451929605}
   - component: {fileID: 2578029236451929606}
-  - component: {fileID: 2578029236451929603}
   - component: {fileID: 2578029236451929607}
+  - component: {fileID: 2578029236451929603}
+  - component: {fileID: 9004646270058460642}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -240,6 +241,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2578029236451929607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578029236451929615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31aaec4e1945742d9b9ace7f5fdf454c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenBoundaryX: 18.4
+  screenBoundaryY: 10.5
 --- !u!114 &2578029236451929603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +271,7 @@ MonoBehaviour:
     type: 3}
   thrustForce: 5
   rotationSpeed: 100
---- !u!114 &2578029236451929607
+--- !u!114 &9004646270058460642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,8 +280,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2578029236451929615}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31aaec4e1945742d9b9ace7f5fdf454c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b241246e29c045f4a768d4adce4a518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenBoundaryX: 18.4
-  screenBoundaryY: 10.5
+  currentHealth: 0
+  maxHealth: 3

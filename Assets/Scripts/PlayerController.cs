@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     // References
     Rigidbody2D playerRB;
     Animator thrustAnimation;
@@ -13,6 +13,11 @@ public class PlayerController : MonoBehaviour
     // Config
     [SerializeField] float thrustForce;
     [SerializeField] float rotationSpeed;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -26,6 +31,7 @@ public class PlayerController : MonoBehaviour
         ApplyRotation();
         ApplyThrust();
         FireBullet();
+        Hyperspace();
     }
 
     void ApplyRotation()
@@ -56,6 +62,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bulletPrefab, transform.position, transform.rotation);
+        }
+    }
+
+    void Hyperspace()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            GameManager.instance.RespawnPlayer(ScreenBoundary.instance.RangeForHyperspace());
         }
     }
 }

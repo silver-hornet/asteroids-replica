@@ -1,12 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ScreenBoundary : MonoBehaviour
 {
+    public static ScreenBoundary instance;
+
     // Config
     [SerializeField] float screenBoundaryX = 18.4f;
     [SerializeField] float screenBoundaryY = 10.5f;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Update()
     {
@@ -31,5 +36,14 @@ public class ScreenBoundary : MonoBehaviour
         {
             transform.position = new Vector2(transform.position.x, screenBoundaryY);
         }
+    }
+
+    public Vector2 RangeForHyperspace()
+    {
+        float randomPosX;
+        float randomPosY;
+        randomPosX = Random.Range(screenBoundaryX, -screenBoundaryX);
+        randomPosY = Random.Range(screenBoundaryY, -screenBoundaryY);
+        return new Vector2(randomPosX, randomPosY);
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AsteroidController : MonoBehaviour
 {
@@ -38,7 +36,15 @@ public class AsteroidController : MonoBehaviour
             Instantiate(nextAsteroid, asteroidRB.position, Quaternion.identity);
         }
 
-        Destroy(other.gameObject);
+        if (other.gameObject.tag == "Bullet")
+        {
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.tag == "Player")
+        {
+            PlayerHealth.instance.KillPlayer();
+        }
+
         Destroy(gameObject);
     }
 }
