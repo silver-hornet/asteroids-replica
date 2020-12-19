@@ -134,9 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9eee38606dc47f484c19022155e525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextAsteroid: {fileID: 4057713067225437383, guid: 0092cffe50f1e4bf2b10076feff542eb,
+  nextAsteroid: {fileID: 4057713067225437383, guid: bcaaaca973b544dd7ab721e9d7cee4d2,
     type: 3}
-  explosion: {fileID: 8300000, guid: 600365f08568248c0b7900a428944cd0, type: 3}
+  explosionSFX: {fileID: 8300000, guid: 600365f08568248c0b7900a428944cd0, type: 3}
+  explosionVFX: {fileID: 974444515953382872, guid: 4b5df689948554ca89a9536d358015c6,
+    type: 3}
   minSpeed: 3
   maxSpeed: 6
   pointValue: 20

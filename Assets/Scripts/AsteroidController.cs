@@ -6,7 +6,8 @@ public class AsteroidController : MonoBehaviour
     // References
     Rigidbody2D asteroidRB;
     [SerializeField] GameObject nextAsteroid;
-    [SerializeField] AudioClip explosion;
+    [SerializeField] AudioClip explosionSFX;
+    [SerializeField] GameObject explosionVFX;
 
     // Config
     float moveSpeedX;
@@ -29,7 +30,7 @@ public class AsteroidController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        AudioSource.PlayClipAtPoint(explosion, transform.position, 1f);
+        AudioSource.PlayClipAtPoint(explosionSFX, transform.position, 1f);
         // TODO Refactor this out into an audio manager script. Not using Play or PlayOneShot because they immediately get destroyed along with the game object.
 
         if (nextAsteroid != null)
@@ -48,6 +49,8 @@ public class AsteroidController : MonoBehaviour
         }
 
         GameManager.instance.UpdateScore(pointValue);
+        GameObject tempExplosion = Instantiate(explosionVFX, transform.position, transform.rotation);
+        Destroy(tempExplosion, 2f);
         Destroy(gameObject);
     }
 }
