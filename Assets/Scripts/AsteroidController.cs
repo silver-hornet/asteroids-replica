@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class AsteroidController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class AsteroidController : MonoBehaviour
     float moveSpeedY;
     [SerializeField] float minSpeed;
     [SerializeField] float maxSpeed;
+    [SerializeField] int pointValue;
 
     void Start()
     {
@@ -45,6 +47,7 @@ public class AsteroidController : MonoBehaviour
             PlayerHealth.instance.KillPlayer();
         }
 
+        GameManager.instance.UpdateScore(pointValue);
         Destroy(gameObject);
     }
 }

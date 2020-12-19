@@ -139,6 +139,7 @@ MonoBehaviour:
   explosion: {fileID: 8300000, guid: 600365f08568248c0b7900a428944cd0, type: 3}
   minSpeed: 3
   maxSpeed: 6
+  pointValue: 100
 --- !u!114 &4057713067225437389
 MonoBehaviour:
   m_ObjectHideFlags: 0

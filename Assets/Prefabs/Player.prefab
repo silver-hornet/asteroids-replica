@@ -269,8 +269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6780802845471558117, guid: e502aec3be85b4a79a7b9dbaa45ab1df,
     type: 3}
-  thrustForce: 5
-  rotationSpeed: 100
+  thrustForce: 7
+  rotationSpeed: 200
 --- !u!114 &9004646270058460642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,5 +283,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b241246e29c045f4a768d4adce4a518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 3
+  currentLives: 0
+  maxLives: 3
