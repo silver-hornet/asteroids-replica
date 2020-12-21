@@ -5,7 +5,7 @@ public class PlayerHealth : MonoBehaviour
     public static PlayerHealth instance;
 
     // Config
-    int currentLives;
+    public int currentLives;
     [SerializeField] int maxLives;
 
     void Awake()
@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         currentLives = maxLives;
+        GameManager.instance.UpdateNumberOfLives();
     }
 
     public void KillPlayer()
@@ -32,10 +33,13 @@ public class PlayerHealth : MonoBehaviour
             currentLives = 0;
             Destroy(gameObject);
         }
+
+        GameManager.instance.UpdateNumberOfLives();
     }
 
     public void ExtraLife()
     {
         currentLives += 1;
+        GameManager.instance.UpdateNumberOfLives();
     }
 }

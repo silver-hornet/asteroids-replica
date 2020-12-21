@@ -10,6 +10,18 @@ public class GameManager : MonoBehaviour
     // References
     public Text scoreText;
     [SerializeField] GameObject largeAsteroid;
+    [SerializeField] Image life1;
+    [SerializeField] Image life2;
+    [SerializeField] Image life3;
+    [SerializeField] Image life4;
+    [SerializeField] Image life5;
+    [SerializeField] Image life6;
+    [SerializeField] Image life7;
+    [SerializeField] Image life8;
+    [SerializeField] Image life9;
+    [SerializeField] Image life10;
+    [SerializeField] Sprite life;
+    [SerializeField] Sprite noLife;
 
     // Config
     int score;
@@ -21,7 +33,7 @@ public class GameManager : MonoBehaviour
     float asteroidSpawnPosYMax = 10f;
     int asteroidCount;
     [SerializeField] int asteroidWaveNumber = 4;
-    
+
     void Awake()
     {
         instance = this;
@@ -88,6 +100,155 @@ public class GameManager : MonoBehaviour
         {
             PlayerHealth.instance.ExtraLife();
             bonus += bonusInterval;
+        }
+    }
+
+    public void UpdateNumberOfLives()
+    {
+        switch (PlayerHealth.instance.currentLives)
+        {
+            case 10:
+                life1.sprite = life;
+                life2.sprite = life;
+                life3.sprite = life;
+                life4.sprite = life;
+                life5.sprite = life;
+                life6.sprite = life;
+                life7.sprite = life;
+                life8.sprite = life;
+                life9.sprite = life;
+                life10.sprite = life;
+                break;
+
+            case 9:
+                life1.sprite = life;
+                life2.sprite = life;
+                life3.sprite = life;
+                life4.sprite = life;
+                life5.sprite = life;
+                life6.sprite = life;
+                life7.sprite = life;
+                life8.sprite = life;
+                life9.sprite = life;
+                life10.sprite = noLife;
+                break;
+
+            case 8:
+                life1.sprite = life;
+                life2.sprite = life;
+                life3.sprite = life;
+                life4.sprite = life;
+                life5.sprite = life;
+                life6.sprite = life;
+                life7.sprite = life;
+                life8.sprite = life;
+                life9.sprite = noLife;
+                life10.sprite = noLife;
+                break;
+
+            case 7:
+                life1.sprite = life;
+                life2.sprite = life;
+                life3.sprite = life;
+                life4.sprite = life;
+                life5.sprite = life;
+                life6.sprite = life;
+                life7.sprite = life;
+                life8.sprite = noLife;
+                life9.sprite = noLife;
+                life10.sprite = noLife;
+                break;
+
+            case 6:
+                life1.sprite = life;
+                life2.sprite = life;
+                life3.sprite = life;
+                life4.sprite = life;
+                life5.sprite = life;
+                life6.sprite = life;
+                life7.sprite = noLife;
+                life8.sprite = noLife;
+                life9.sprite = noLife;
+                life10.sprite = noLife;
+                break;
+
+            case 5:
+                life1.sprite = life;
+                life2.sprite = life;
+                life3.sprite = life;
+                life4.sprite = life;
+                life5.sprite = life;
+                life6.sprite = noLife;
+                life7.sprite = noLife;
+                life8.sprite = noLife;
+                life9.sprite = noLife;
+                life10.sprite = noLife;
+                break;
+
+            case 4:
+                life1.sprite = life;
+                life2.sprite = life;
+                life3.sprite = life;
+                life4.sprite = life;
+                life5.sprite = noLife;
+                life6.sprite = noLife;
+                life7.sprite = noLife;
+                life8.sprite = noLife;
+                life9.sprite = noLife;
+                life10.sprite = noLife;
+                break;
+
+            case 3:
+                life1.sprite = life;
+                life2.sprite = life;
+                life3.sprite = life;
+                life4.sprite = noLife;
+                life5.sprite = noLife;
+                life6.sprite = noLife;
+                life7.sprite = noLife;
+                life8.sprite = noLife;
+                life9.sprite = noLife;
+                life10.sprite = noLife;
+                break;
+
+            case 2:
+                life1.sprite = life;
+                life2.sprite = life;
+                life3.sprite = noLife;
+                life4.sprite = noLife;
+                life5.sprite = noLife;
+                life6.sprite = noLife;
+                life7.sprite = noLife;
+                life8.sprite = noLife;
+                life9.sprite = noLife;
+                life10.sprite = noLife;
+                break;
+
+            case 1:
+                life1.sprite = life;
+                life2.sprite = noLife;
+                life3.sprite = noLife;
+                life4.sprite = noLife;
+                life5.sprite = noLife;
+                life6.sprite = noLife;
+                life7.sprite = noLife;
+                life8.sprite = noLife;
+                life9.sprite = noLife;
+                life10.sprite = noLife;
+                break;
+
+            case 0:
+                life1.sprite = noLife;
+                life2.sprite = noLife;
+                life3.sprite = noLife;
+                life4.sprite = noLife;
+                life5.sprite = noLife;
+                life6.sprite = noLife;
+                life7.sprite = noLife;
+                life8.sprite = noLife;
+                life9.sprite = noLife;
+                life10.sprite = noLife;
+                break;
         }
     }
 }
