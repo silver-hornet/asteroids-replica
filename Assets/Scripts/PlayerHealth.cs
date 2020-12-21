@@ -5,7 +5,7 @@ public class PlayerHealth : MonoBehaviour
     public static PlayerHealth instance;
 
     // Config
-    [SerializeField] int currentLives;
+    int currentLives;
     [SerializeField] int maxLives;
 
     void Awake()
