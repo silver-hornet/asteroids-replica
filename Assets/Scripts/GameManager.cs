@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image life10;
     [SerializeField] Sprite life;
     [SerializeField] Sprite noLife;
+    [SerializeField] GameObject titleScreen;
+    [SerializeField] GameObject player1Screen;
 
     // Config
     int score;
@@ -42,11 +44,18 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
         SpawnAsteroidWave(asteroidWaveNumber);
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            titleScreen.SetActive(false);
+            player1Screen.SetActive(true);
+        }
+
         asteroidCount = FindObjectsOfType<AsteroidController>().Length;
 
         if (asteroidCount == 0)
@@ -252,3 +261,37 @@ public class GameManager : MonoBehaviour
         }
     }
 }
+
+
+
+
+
+
+//    public TextMeshProUGUI gameoverText;
+//    public bool isGameActive;
+//    public Button restartButton;
+//    public GameObject titleScreen;
+
+
+
+//    public void GameOver()
+//    {
+//        restartButton.gameObject.SetActive(true);
+//        gameoverText.gameObject.SetActive(true);
+//        isGameActive = false;
+//    }
+
+//    public void RestartGame()
+//    {
+//        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+//    }
+
+//    public void StartGame(int difficulty)
+//    {
+//        isGameActive = true;
+//        titleScreen.gameObject.SetActive(false);
+//    }
+//}
+
+//then on another script, make sure to include GameManager.instance.isGameActive
+//    also make sure to prevent the game from starting until after the title screen
