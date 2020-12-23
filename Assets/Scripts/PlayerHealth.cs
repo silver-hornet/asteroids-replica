@@ -32,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
         {
             currentLives = 0;
             Destroy(gameObject);
+            GameManager.instance.GameOver();
         }
 
         GameManager.instance.UpdateNumberOfLives();

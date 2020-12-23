@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player;
     int loadingTime = 3;
     bool isGameActive;
+    [SerializeField] GameObject gameOverScreen;
 
     // Config
     int score;
@@ -59,6 +60,17 @@ public class GameManager : MonoBehaviour
             player1Screen.SetActive(true);
             StartCoroutine(StartGameCo());
         }
+
+        if (isGameActive == true)
+        {
+            asteroidCount = FindObjectsOfType<AsteroidController>().Length;
+
+            if (asteroidCount == 0)
+            {
+                asteroidWaveNumber++;
+                SpawnAsteroidWave(asteroidWaveNumber);
+            }
+        }
     }
 
     IEnumerator StartGameCo()
@@ -73,14 +85,6 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
         player.SetActive(true);
         SpawnAsteroidWave(asteroidWaveNumber);
-
-        asteroidCount = FindObjectsOfType<AsteroidController>().Length;
-
-        if (asteroidCount == 0)
-        {
-            asteroidWaveNumber++;
-            SpawnAsteroidWave(asteroidWaveNumber);
-        }
     }
 
     void SpawnAsteroidWave(int asteroidsToSpawn)
@@ -273,38 +277,18 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+    public void GameOver()
+    {
+        gameOverScreen.SetActive(true);
+        StartCoroutine(GameOverCo());
+    }
+
+    IEnumerator GameOverCo()
+    {
+        yield return new WaitForSeconds(loadingTime);
+        isGameActive = false;
+        gameOverScreen.SetActive(false);
+        titleScreen.SetActive(true);
+    }
 }
-
-
-
-
-
-
-//    public TextMeshProUGUI gameoverText;
-//    public bool isGameActive;
-//    public Button restartButton;
-//    public GameObject titleScreen;
-
-
-
-//    public void GameOver()
-//    {
-//        restartButton.gameObject.SetActive(true);
-//        gameoverText.gameObject.SetActive(true);
-//        isGameActive = false;
-//    }
-
-//    public void RestartGame()
-//    {
-//        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-//    }
-
-//    public void StartGame(int difficulty)
-//    {
-//        isGameActive = true;
-//        titleScreen.gameObject.SetActive(false);
-//    }
-//}
-
-//then on another script, make sure to include GameManager.instance.isGameActive
-//    also make sure to prevent the game from starting until after the title screen
