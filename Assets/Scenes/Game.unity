@@ -401,7 +401,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1837808447}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -999,6 +999,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079430326}
   m_CullTransparentMesh: 0
+--- !u!1 &1221814084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2578029236451929615, guid: 95287231f4bb74037b3befd0a73193bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2578029236227745400}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1347317460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,7 +1113,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1660288370}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1248,6 +1254,7 @@ RectTransform:
   - {fileID: 645679433}
   - {fileID: 584540244}
   - {fileID: 1837808447}
+  - {fileID: 2061364881}
   - {fileID: 1477517962}
   - {fileID: 1973354454}
   m_Father: {fileID: 0}
@@ -1304,6 +1311,7 @@ MonoBehaviour:
   noLife: {fileID: 21300000, guid: b4d60de541fd34f3280da4fa85e0b530, type: 3}
   titleScreen: {fileID: 584540243}
   player1Screen: {fileID: 1837808446}
+  player: {fileID: 1221814084}
   bonusInterval: 10000
   asteroidWaveNumber: 4
 --- !u!4 &1663855725
@@ -1570,7 +1578,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2061364881}
   - {fileID: 433425314}
   m_Father: {fileID: 1660288370}
   m_RootOrder: 2
@@ -1610,7 +1617,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1660288370}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1695,8 +1702,8 @@ RectTransform:
   - {fileID: 972160239}
   - {fileID: 464999265}
   - {fileID: 1059008029}
-  m_Father: {fileID: 1837808447}
-  m_RootOrder: 0
+  m_Father: {fileID: 1660288370}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1769,6 +1776,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578029236451929615, guid: 95287231f4bb74037b3befd0a73193bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95287231f4bb74037b3befd0a73193bc, type: 3}

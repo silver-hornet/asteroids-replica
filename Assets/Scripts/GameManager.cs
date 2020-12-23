@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Sprite noLife;
     [SerializeField] GameObject titleScreen;
     [SerializeField] GameObject player1Screen;
+    [SerializeField] GameObject player;
+    int loadingTime = 3;
+    bool isGameActive;
 
     // Config
     int score;
@@ -45,7 +48,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        SpawnAsteroidWave(asteroidWaveNumber);
+        isGameActive = false;
     }
 
     void Update()
@@ -54,7 +57,22 @@ public class GameManager : MonoBehaviour
         {
             titleScreen.SetActive(false);
             player1Screen.SetActive(true);
+            StartCoroutine(StartGameCo());
         }
+    }
+
+    IEnumerator StartGameCo()
+    {
+        yield return new WaitForSeconds(loadingTime);
+        player1Screen.SetActive(false);
+        StartGame();
+    }
+
+    void StartGame()
+    {
+        isGameActive = true;
+        player.SetActive(true);
+        SpawnAsteroidWave(asteroidWaveNumber);
 
         asteroidCount = FindObjectsOfType<AsteroidController>().Length;
 
@@ -62,11 +80,6 @@ public class GameManager : MonoBehaviour
         {
             asteroidWaveNumber++;
             SpawnAsteroidWave(asteroidWaveNumber);
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene("Game");
         }
     }
 
