@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     // References
     public Text scoreText;
+    [SerializeField] Text highScoreText;
     [SerializeField] GameObject largeAsteroid;
     [SerializeField] Image life1;
     [SerializeField] Image life2;
@@ -28,9 +28,12 @@ public class GameManager : MonoBehaviour
     int loadingTime = 3;
     bool isGameActive;
     [SerializeField] GameObject gameOverScreen;
+    [SerializeField] GameObject livesUI;
+    [SerializeField] GameObject asteroidsDemo;
 
     // Config
     int score;
+    int highScore;
     int bonus;
     [SerializeField] int bonusInterval = 10000;
     float asteroidSpawnPosXMin = 13f;
@@ -43,21 +46,24 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        bonus = bonusInterval;
+        //bonus = bonusInterval;
     }
 
     void Start()
     {
 
         isGameActive = false;
+        asteroidsDemo.SetActive(true);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && isGameActive == false)
         {
             titleScreen.SetActive(false);
+            asteroidsDemo.SetActive(false);
             player1Screen.SetActive(true);
+            livesUI.SetActive(true);
             StartCoroutine(StartGameCo());
         }
 
@@ -83,7 +89,10 @@ public class GameManager : MonoBehaviour
     void StartGame()
     {
         isGameActive = true;
+        bonus = bonusInterval;
+        player.transform.position = new Vector2(0, 0);
         player.SetActive(true);
+        UpdateNumberOfLives();
         SpawnAsteroidWave(asteroidWaveNumber);
     }
 
@@ -288,7 +297,30 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(loadingTime);
         isGameActive = false;
+        var remainingAsteroids = GameObject.FindGameObjectsWithTag("Asteroid");
+        for (int i = 0; i < remainingAsteroids.Length; i++)
+        {
+            Destroy(remainingAsteroids[i]);
+        }
+
         gameOverScreen.SetActive(false);
         titleScreen.SetActive(true);
+        asteroidsDemo.SetActive(true);
+        PlayerHealth.instance.currentLives = PlayerHealth.instance.maxLives;
+        UpdateNumberOfLives();
+        livesUI.SetActive(false);
+        SaveHighScore();
+    }
+
+    void SaveHighScore()
+    {
+        if (score > highScore)
+        {
+            highScore = score;
+            highScoreText.text = scoreText.text;
+        }
+        
+        score = 0;
+        scoreText.text = score.ToString();
     }
 }

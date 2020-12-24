@@ -1,0 +1,157 @@
+##Asteroids Replica
+
+###Summary
+First, watch the original Asteroids at https://www.youtube.com/watch?v=WYSupJ5r2zo and do a product tear down.
+
+Play in browser at https://my.ign.com/atari/asteroids
+
+Game Design Document: https://twitter.com/jpdysonplay/status/846373739671498753
+
+https://en.wikipedia.org/wiki/Asteroids_%28video_game%29
+
+Will create sprites using Piskel App
+
+###Initial commit
+Play area (including appearing / reappearing off-screen)
+Player rocket (thrust, rotate)
+Player shoot (and bullet disappears after a certain time)
+
+Camera
+- Set size to 10
+- Set background to a black, solid color
+
+Rocket
+- create a rocket sprite sheet in Piskelapp (2 frames for animation)
+- import sprite sheet
+- create game object for player and add in sprite
+- add circle collider 2D
+- add rigidbody2d
+- add player controller script
+- make rocket move through thrust and rotation
+- create animation states for player_idle and player_thrust, then set transitions and a isThrusting bool
+- create audio source and add sound clip for thrust
+- Add the off-screen switch thing (Euclidean Torus?)
+- Create bullet in Piskel app
+- import sprite
+- create game object from bullet
+- create bullet controller script
+- make bullet fly forward
+
+###Commit 2
+Refactored PlayerController and BulletController. Added ScreenBoundary script. Prefabbed everything.
+
+Rocket
+- create audio source and add sound clip for bullet
+- refactored scripts
+
+###Commit 3
+- Create asteroid sprite
+- Import Asteroid sprite
+- Create game object out of asteroid sprite
+- add rigidbody2d
+- add circle collider 2D
+- add asteroid controller script
+- make asteroid move
+- freeze rotation constraint
+- Add the off-screen switch thing
+- Add player and asteroid layers
+- Layer Collision Matrix (so asteroids can’t hit each other)
+
+###Commit 4
+- Destroy asteroid with bullet
+- Create 3 different-sized asteroids (large, medium, small)
+- When an asteroid gets hit, it splits into two of the next smallest-size asteroid (when it’s the smallest, it will disappear when hit)
+- Player collision with asteroid
+- Layer Collision Matrix (so bullet and player can’t collide with each other)
+
+###Commit 5
+- Explosion sound when asteroid or player is hit
+- R to restart game
+- MVP is complete (core gameplay loop – the “fun” – exists. Anything else at this point is just tuning and polish)
+
+###Commit 6
+Player has 3 lives
+Player dies after 3 lives
+Player respawn into original starting position
+Player hyperspace
+
+###Commit 7
+Score for asteroids
+Small rock = 100 points
+Medium = 50 points
+Large = 20 points
+Score UI
+Extra life every 10,000 points
+
+###Commit 8
+Explosion particle effects
+
+###Commit 9
+Asteroid waves
+
+###Commit 10
+Add lives to UI canvas
+
+###Commit 11
+Add high score to middle top of score UI canvas (done, but not hooked up yet)
+Title screen (blinking Push Start text, 1 Coin 1 Play text, and mystery score top right)
+Player 1 loading screen
+
+###Commit 12
+Hooked up title screen and player 1 loading screen
+
+####Commit 13
+Fixed asteroid spawning issue
+Added game over screen
+
+###Commit 14
+Change fonts
+Enable lives UI on player 1 loading screen
+Asteroids demo on title screen
+Remove remaining asteroids after game over
+Reset lives after game over
+Reset score after game over
+Save high score
+Reset score needed for bonus life
+
+###Challenges encountered and fixed
+- asteroids hitting each other (fixed using layers and layer collision matrix)
+- bullet colliding with player (fixed using above as well)
+- adding audio on asteroid controller and audio not playing (fixed temporarily by using PlayAtPoint; will later refactor out into separate audio manager class)
+- figuring out hyperspace range
+- extra life every 10,000 points
+- asteroid waves
+- adding lives in UI
+- hooking up title screen, player 1 loading screen, game screen, game over screen
+- making sure that various UI and game elements only load up on the correct screen
+- ensuring that score doesn’t persist into the next game session
+- ensuring that number of lives resets for a new game
+
+###Backlog (for another time)
+Player respawn into a safe position (perhaps using raycasting?)
+
+Input your initials screen
+Then high score table screen (flashing push start text, your score top left, high score top middle, high scores heading, top 10 scores)
+
+3 different styles of asteroids
+
+2 saucers
+Large saucer (shoots randomly and poorly)
+Small saucer (shoots frequently at the ship)
+Saucer can collide with asteroids
+After reaching a score of 40,000, only the small saucer appears
+As the player’s score increases, the angle range of the shots from the small saucer diminishes until the saucer fires extremely accurately.
+When the number of asteroids on the screen is small, a saucer enters
+As the game progresses, the saucers will enter more frequently
+After 10,000 points, the small saucer becomes a permanent part of the game. 
+Large Saucer = 200
+Small Saucer = 1000
+
+Refactoring
+Audio manager out into its own class
+Fixed update vs update (I haven’t been doing this properly)
+Some of the methods are starting to get long (specifically GameManager)
+Don’t make variables public (use getters instead)
+Better way of making lives display on UI
+Consider using enum for different screens?
+Introduce some more design patterns (eg. Object pooling, observer pattern)

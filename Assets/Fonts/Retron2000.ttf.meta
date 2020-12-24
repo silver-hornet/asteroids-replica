@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 12f062d954f284c3aafae91dbc485ab2
+guid: 2c905a21537a3428e87f5895b5dfc25e
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Vector Battle
+  fontName: Retron2000
   fontNames:
-  - Vector Battle
+  - Retron2000
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

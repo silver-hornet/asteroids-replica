@@ -4,9 +4,12 @@ public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth instance;
 
+    // References
+    [SerializeField] GameObject player;
+
     // Config
     public int currentLives;
-    [SerializeField] int maxLives;
+    public int maxLives;
 
     void Awake()
     {
@@ -31,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
         else if (currentLives <= 0)
         {
             currentLives = 0;
-            Destroy(gameObject);
+            player.SetActive(false);
             GameManager.instance.GameOver();
         }
 
