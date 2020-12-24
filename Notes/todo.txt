@@ -126,6 +126,7 @@ Reset score needed for bonus life
 - making sure that various UI and game elements only load up on the correct screen
 - ensuring that score doesn’t persist into the next game session
 - ensuring that number of lives resets for a new game
+- various challenges with needing to update data on game objects that are changing state between active and inactive on a regular basis
 
 ###Backlog (for another time)
 Player respawn into a safe position (perhaps using raycasting?)
@@ -148,10 +149,11 @@ Large Saucer = 200
 Small Saucer = 1000
 
 Refactoring
-Audio manager out into its own class
-Fixed update vs update (I haven’t been doing this properly)
-Some of the methods are starting to get long (specifically GameManager)
-Don’t make variables public (use getters instead)
-Better way of making lives display on UI
-Consider using enum for different screens?
-Introduce some more design patterns (eg. Object pooling, observer pattern)
+- Move out the audio manager into its own class
+- Revisit the use of Fixed Update vs Update (I have relied too much on Update; I should be putting physics-related calculations in Fixed Update instead)
+- Make certain classes smaller (eg. GameManager)
+- Extract methods out from other methods (some methods are currently doing too much)
+- Don’t make variables public (use getters instead)
+- Find a better way of making lives display on UI
+- Consider using enums for different screens
+- Introduce some more design patterns (eg. Object pooling, observer pattern)
